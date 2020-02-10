@@ -48,7 +48,7 @@ class PokemonHelpers {
         let allPokemon = PokemonGenerator.getPokemonArray()
         var searchedPokemon: [Pokemon] = []
         for pokerman in allPokemon {
-            if pokerman.name.contains(name) {
+            if pokerman.name.lowercased().contains(name) {
                 searchedPokemon.append(pokerman)
             }
         }
