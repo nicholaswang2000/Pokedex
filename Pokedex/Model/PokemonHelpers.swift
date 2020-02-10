@@ -8,9 +8,9 @@
 
 import Foundation
 
-class RandomPokemon {
+class PokemonHelpers {
     
-    static func generateRandomPokemon(total total: Int) -> [Pokemon] {
+    static func generateRandomPokemon(_ total: Int) -> [Pokemon] {
         var randomPokemonArray: [Pokemon] = []
         var intsAlreadyUsed: [Int] = []
         let pokemonArray = PokemonGenerator.getPokemonArray()
@@ -32,6 +32,16 @@ class RandomPokemon {
         print(randomPokemonArray.count)
         let count = NSSet(array: randomPokemonArray).count
         print(count)
+    }
+    
+    static func getPokemonFromID(_ id: Int) -> Pokemon {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        for pokerman in allPokemon {
+            if pokerman.id == id {
+                return pokerman
+            }
+        }
+        return allPokemon[0]
     }
     
 }

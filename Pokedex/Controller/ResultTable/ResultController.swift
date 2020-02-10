@@ -23,8 +23,7 @@ class ResultController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? DetailController {
             let rowNo = (PokemonTable.indexPathForSelectedRow?.row)!
-            destinationVC.pokemonName = randomPokemonArray[rowNo].name
-            destinationVC.pokemonImageURL = randomPokemonArray[rowNo].imageUrl
+            destinationVC.pokemon = randomPokemonArray[rowNo]
         }
     }
 

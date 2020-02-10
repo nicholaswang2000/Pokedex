@@ -146,4 +146,17 @@ class Pokemon: Decodable {
             return "Unknown"
         }
     }
+    
+    func getTypes() -> String {
+        
+        let types:[PokeType] = self.types
+        var typeStr = ""
+        for type in types {
+            typeStr += Pokemon.getTypeString(type) + ", "
+        }
+        typeStr.remove(at: typeStr.index(before: typeStr.endIndex))
+        typeStr.remove(at: typeStr.index(before: typeStr.endIndex))
+        
+        return typeStr
+    }
 }

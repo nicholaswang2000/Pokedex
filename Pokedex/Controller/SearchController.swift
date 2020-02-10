@@ -15,13 +15,13 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        UserDefaults.standard.set([Int](), forKey: "favoritesArray")
         // Do any additional setup after loading the view.
     }
     
 
     @IBAction func generateRandom(_ sender: Any) {
-        pokemonList = RandomPokemon.generateRandomPokemon(total: 20)
+        pokemonList = PokemonHelpers.generateRandomPokemon(20)
         //RandomPokemon.testWorking(pokemonList)
         
         self.performSegue(withIdentifier: "GoToResultsVC", sender: self)
