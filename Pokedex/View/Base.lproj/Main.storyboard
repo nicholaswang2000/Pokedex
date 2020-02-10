@@ -49,9 +49,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8X-0j-P1C">
+                                                    <rect key="frame" x="283" y="12" width="71" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="PokemonID" destination="j8X-0j-P1C" id="Jfy-OJ-gi2"/>
                                             <outlet property="PokemonImage" destination="Xz1-3s-AVF" id="bR9-t0-Pki"/>
                                             <outlet property="PokemonName" destination="MAG-ec-qoR" id="U5J-7u-pyW"/>
                                             <outlet property="PokemonTypes" destination="VNf-M1-kmU" id="Mft-vJ-gaS"/>
@@ -119,53 +127,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXw-CB-U8R">
-                                <rect key="frame" x="139" y="335" width="136" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dup-Vc-nTy">
+                                <rect key="frame" x="20" y="129.5" width="374" height="642"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLr-gw-sBp">
+                                        <rect key="frame" x="57" y="195" width="235" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3z-SH-ze7">
+                                        <rect key="frame" x="300" y="199" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Search"/>
+                                        <connections>
+                                            <action selector="searchButtonPressed:" destination="v1U-I2-g6S" eventType="touchUpInside" id="xc5-3s-JAO"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UNi-EB-7hx">
+                                        <rect key="frame" x="29" y="193" width="20" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pokemon Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr1-TW-sZI">
+                                        <rect key="frame" x="85" y="136" width="205" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmb-0J-91W">
+                                        <rect key="frame" x="91" y="416" width="192" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Generate Random Pokemon"/>
+                                        <connections>
+                                            <action selector="generateRandom:" destination="v1U-I2-g6S" eventType="touchUpInside" id="Ior-wi-N0O"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="KaI-fl-Zoa">
+                                <rect key="frame" x="87" y="384" width="240" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search by Category"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLr-gw-sBp">
-                                <rect key="frame" x="159" y="244" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRJ-Dp-oL6">
-                                <rect key="frame" x="117" y="373" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search by Pokemon Name"/>
-                            </button>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hS9-Cw-aHF">
-                                <rect key="frame" x="0.0" y="175" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-d5-1go">
-                                <rect key="frame" x="131" y="411" width="155" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search by Pokemon ID"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmb-0J-91W">
-                                <rect key="frame" x="112" y="449" width="192" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Generate Random Pokemon"/>
-                                <connections>
-                                    <action selector="generateRandom:" destination="v1U-I2-g6S" eventType="touchUpInside" id="Ior-wi-N0O"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ0-hj-f1h">
+                                        <rect key="frame" x="21" y="24" width="85" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="By Category"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fI7-Gf-Ozg">
+                                        <rect key="frame" x="158" y="24" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="By Name"/>
+                                        <connections>
+                                            <action selector="nameSearch:" destination="v1U-I2-g6S" eventType="touchUpInside" id="BSw-DP-Fux"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VS-nc-Idj">
+                                        <rect key="frame" x="25" y="90" width="77" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="By Number"/>
+                                        <connections>
+                                            <action selector="numberSearch:" destination="v1U-I2-g6S" eventType="touchUpInside" id="446-1P-iDh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPL-9T-lUO">
+                                        <rect key="frame" x="165" y="90" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="v1U-I2-g6S" eventType="touchUpInside" id="Q4w-i8-V7X"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <viewLayoutGuide key="safeArea" id="1I9-ZW-XSe"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dup-Vc-nTy" firstAttribute="width" secondItem="97L-gw-QnQ" secondAttribute="width" multiplier="0.903382" id="3as-ho-MgT"/>
+                            <constraint firstItem="dup-Vc-nTy" firstAttribute="height" secondItem="97L-gw-QnQ" secondAttribute="height" multiplier="0.716518" id="N5T-Ta-NVa"/>
+                            <constraint firstItem="dup-Vc-nTy" firstAttribute="centerX" secondItem="eIj-Um-gZ3" secondAttribute="centerX" id="UNJ-HE-mqb"/>
+                            <constraint firstItem="dup-Vc-nTy" firstAttribute="centerY" secondItem="eIj-Um-gZ3" secondAttribute="centerY" id="iHq-0g-5ZD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eIj-Um-gZ3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="lXA-If-bFg"/>
                     <navigationItem key="navigationItem" id="p4h-2v-MsS"/>
                     <connections>
+                        <outlet property="normalView" destination="dup-Vc-nTy" id="eBp-fw-NJc"/>
+                        <outlet property="optionsView" destination="KaI-fl-Zoa" id="5yp-Oo-QkF"/>
+                        <outlet property="textfield" destination="fLr-gw-sBp" id="QUX-56-LdV"/>
                         <segue destination="Woe-hj-HtA" kind="show" identifier="GoToResultsVC" id="wbh-w6-Q8O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPr-Fo-C9R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="81"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="80.357142857142847"/>
         </scene>
         <!--Result Controller-->
         <scene sceneID="11K-HQ-QD6">
@@ -208,6 +267,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iE-TM-iMf">
+                                                    <rect key="frame" x="279" y="11" width="77" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vor-se-d4b" firstAttribute="centerX" secondItem="bsA-SL-Bz8" secondAttribute="centerX" multiplier="0.3" id="6yL-Hx-koO"/>
@@ -215,6 +281,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="PokemonIDLabel" destination="5iE-TM-iMf" id="cKz-zc-VsB"/>
                                             <outlet property="PokemonImage" destination="Vor-se-d4b" id="LKG-Gf-YgM"/>
                                             <outlet property="PokemonNameLabel" destination="YWQ-az-vhT" id="xHx-DR-gGU"/>
                                             <outlet property="PokemonTypeLabel" destination="Q1f-b6-vMz" id="AJ6-NA-rpV"/>

@@ -10,7 +10,7 @@ import UIKit
 
 class ResultController: UIViewController {
     
-    var randomPokemonArray: [Pokemon] = []
+    var pokemonArray: [Pokemon] = []
     
     @IBOutlet weak var PokemonTable: UITableView!
     
@@ -23,7 +23,7 @@ class ResultController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? DetailController {
             let rowNo = (PokemonTable.indexPathForSelectedRow?.row)!
-            destinationVC.pokemon = randomPokemonArray[rowNo]
+            destinationVC.pokemon = pokemonArray[rowNo]
         }
     }
 

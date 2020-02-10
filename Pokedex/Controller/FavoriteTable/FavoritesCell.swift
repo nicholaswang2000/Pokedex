@@ -13,6 +13,7 @@ class FavoritesCell: UITableViewCell {
     @IBOutlet weak var PokemonImage: UIImageView!
     @IBOutlet weak var PokemonName: UILabel!
     @IBOutlet weak var PokemonTypes: UILabel!
+    @IBOutlet weak var PokemonID: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

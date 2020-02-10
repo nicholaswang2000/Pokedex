@@ -44,4 +44,25 @@ class PokemonHelpers {
         return allPokemon[0]
     }
     
+    static func getNameSearchArray(_ name: String) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var searchedPokemon: [Pokemon] = []
+        for pokerman in allPokemon {
+            if pokerman.name.contains(name) {
+                searchedPokemon.append(pokerman)
+            }
+        }
+        return searchedPokemon
+    }
+    
+    static func getNumberSearchArray(_ id: Int) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        for pokerman in allPokemon {
+            if id == pokerman.id {
+                return [pokerman]
+            }
+        }
+        return []
+    }
+    
 }

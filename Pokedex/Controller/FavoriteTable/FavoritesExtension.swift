@@ -22,6 +22,7 @@ extension FavoritesController: UITableViewDelegate, UITableViewDataSource {
         let imageURL = URL(string: currPokemon.imageUrl)
         cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/60319-200.png")!)
         cell.PokemonTypes.text = "Type: " + currPokemon.getTypes()
+        cell.PokemonID.text = "#" + String(currPokemon.id)
         return cell
     }
     
