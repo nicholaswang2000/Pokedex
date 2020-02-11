@@ -17,7 +17,7 @@ extension ResultController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonTableCell", for: indexPath) as! PokemonTableCell
         let currPokemon = pokemonArray[indexPath.row]
         cell.PokemonNameLabel.text = currPokemon.name
         let imageURL = URL(string: currPokemon.imageUrl)

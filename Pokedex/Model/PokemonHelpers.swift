@@ -47,7 +47,7 @@ class PokemonHelpers {
     static func getNameSearchArray(_ name: String) -> [Pokemon] {
         let allPokemon = PokemonGenerator.getPokemonArray()
         for pokerman in allPokemon {
-            if pokerman.name.lowercased() == name.lowercased() {
+            if pokerman.name.lowercased().trimmingCharacters(in: .whitespaces) == name.lowercased().trimmingCharacters(in: .whitespaces) {
                 return [pokerman]
             }
         }

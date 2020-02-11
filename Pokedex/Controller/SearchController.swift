@@ -14,9 +14,9 @@ class SearchController: UIViewController {
     @IBOutlet weak var optionsView: UIView!
     @IBOutlet weak var textfield: UITextField!
     
-    var pokemonList:[Pokemon] = []
+    var randomPokemonList:[Pokemon] = []
     var textToSearch = ""
-    var searchOrRandom = 0 // 0 means random, 1 means category, 2 means name, 3 means number
+    var searchOrRandom = 0 // 0 means random, 1 means category, 2 means name, 3 means number, 4 means all
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +45,14 @@ class SearchController: UIViewController {
     }
     
     @IBAction func generateRandom(_ sender: Any) {
-        pokemonList = PokemonHelpers.generateRandomPokemon(20)
-        //RandomPokemon.testWorking(pokemonList)
+        randomPokemonList = PokemonHelpers.generateRandomPokemon(20)
+        //RandomPokemon.testWorking(randomPokemonList)
         searchOrRandom = 0
+        self.performSegue(withIdentifier: "GoToResultsVC", sender: self)
+    }
+    
+    @IBAction func listAllPokemon(_ sender: Any) {
+        searchOrRandom = 4
         self.performSegue(withIdentifier: "GoToResultsVC", sender: self)
     }
     
@@ -59,8 +64,10 @@ class SearchController: UIViewController {
             self.present(alert, animated: true)
         } else {
             optionsView.isHidden = false
+            normalView.isHidden = true
         }
     }
+    
     
     // Implement category search last
     
@@ -76,21 +83,23 @@ class SearchController: UIViewController {
     
     @IBAction func cancelAction(_ sender: Any) {
         optionsView.isHidden = true
+        normalView.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToResultsVC" {
             if searchOrRandom == 0 {
                 let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = pokemonList
+                destinationVC.pokemonArray = randomPokemonList
             } else if searchOrRandom == 2 {
                 let destinationVC = segue.destination as! ResultController
                 destinationVC.pokemonArray = PokemonHelpers.getNameSearchArray(textToSearch)
-                print(textToSearch)
             } else if searchOrRandom == 3 {
                 let destinationVC = segue.destination as! ResultController
                 destinationVC.pokemonArray = PokemonHelpers.getNumberSearchArray(Int(textToSearch) ?? 0)
-                print(textToSearch)
+            } else if searchOrRandom == 4 {
+                let destinationVC = segue.destination as! ResultController
+                destinationVC.pokemonArray = PokemonGenerator.getPokemonArray()
             }
         }
         
