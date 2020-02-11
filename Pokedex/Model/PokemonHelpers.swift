@@ -97,4 +97,29 @@ class PokemonHelpers {
         return pokemonArr
     }
     
+    static func getTypeSearchArray(_ typeArr: [PokeType]) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var pokemonArr: [Pokemon] = []
+        for pokerman in allPokemon {
+            let currTypes = pokerman.types
+            for ct in currTypes {
+                if typeArr.contains(ct) {
+                    pokemonArr.append(pokerman)
+                    continue
+                }
+            }
+        }
+        return pokemonArr
+    }
+    
+    static func getPokeTypeArray(_ typeDict: [PokeType: Bool]) -> [PokeType] {
+        var typeArr:[PokeType] = []
+        for type in typeDict {
+            if type.value {
+                typeArr.append(type.key)
+            }
+        }
+        return typeArr
+    }
+    
 }

@@ -36,11 +36,9 @@ class ResultController: UIViewController {
         case 0:
             tableView.isHidden = false
             collectionView.isHidden = true
-            //print("0")
         case 1:
             tableView.isHidden = true
             collectionView.isHidden = false
-            //print("1")
         default:
             break
         }
