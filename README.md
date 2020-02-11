@@ -4,16 +4,16 @@ Pokedex is our second mini project for our training program for Mobile Developer
 <h1>Screenshots of the Game</h1>
 
 <h3>Main Menu Search Screen:</h3>
-<img src="img1.png" width="40%">
+<img src="screenshots/img1.png" width="40%">
 <br><br>
 <h3>Search Result Screen:</h3>
-<img src="img2.png" width="40%">
+<img src="screenshots/img2.png" width="40%">
 <br><br>
 <h3>Pokemon Profile Screen:</h3>
-<img src="img3.png" width="40%">
+<img src="screenshots/img3.png" width="40%">
 <br><br>
 <h3>Menu Search Screen when Searching for Matching Categories</h3>
-<img src="img4.png" width="40%">
+<img src="screenshots/img4.png" width="40%">
 <br><br>
 <h3>Favorite Pokemon Page</h3>
-<img src="img5.png" width="40%">
+<img src="screenshots/img5.png" width="40%">
