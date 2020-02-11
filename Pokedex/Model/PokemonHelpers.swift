@@ -64,4 +64,37 @@ class PokemonHelpers {
         return []
     }
     
+    static func getMinAttackArray(_ minAttack: Int) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var pokemonArr: [Pokemon] = []
+        for pokerman in allPokemon {
+            if minAttack <= pokerman.attack {
+                pokemonArr.append(pokerman)
+            }
+        }
+        return pokemonArr
+    }
+    
+    static func getMinHealthArray(_ minHealth: Int) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var pokemonArr: [Pokemon] = []
+        for pokerman in allPokemon {
+            if minHealth <= pokerman.health {
+                pokemonArr.append(pokerman)
+            }
+        }
+        return pokemonArr
+    }
+    
+    static func getMinDefenseArray(_ minDefense: Int) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var pokemonArr: [Pokemon] = []
+        for pokerman in allPokemon {
+            if minDefense <= pokerman.defense {
+                pokemonArr.append(pokerman)
+            }
+        }
+        return pokemonArr
+    }
+    
 }
