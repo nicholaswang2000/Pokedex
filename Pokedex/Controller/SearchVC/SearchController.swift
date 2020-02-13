@@ -48,9 +48,6 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // initializes favoritesArray to empty when VC loads
-        UserDefaults.standard.set([Int](), forKey: "favoritesArray")
-        
         normalView.isHidden = false
         optionsView.isHidden = true
         categoryView.isHidden = true

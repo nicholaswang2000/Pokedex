@@ -95,7 +95,6 @@ extension SearchController {
         } else {
             sender.setTitleColor(UIColor.white, for: .normal)
             typesPressed[poketype] = false
-            print(pressed)
         }
     }
     

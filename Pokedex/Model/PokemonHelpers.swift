@@ -25,15 +25,6 @@ class PokemonHelpers {
         return randomPokemonArray
     }
     
-    static func testWorking(_ randomPokemonArray:[Pokemon]) {
-        for p in randomPokemonArray {
-            print(p.id)
-        }
-        print(randomPokemonArray.count)
-        let count = NSSet(array: randomPokemonArray).count
-        print(count)
-    }
-    
     static func getPokemonFromID(_ id: Int) -> Pokemon {
         let allPokemon = PokemonGenerator.getPokemonArray()
         for pokerman in allPokemon {

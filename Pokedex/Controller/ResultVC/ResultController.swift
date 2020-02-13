@@ -11,7 +11,7 @@ import UIKit
 class ResultController: UIViewController {
     
     var pokemonArray: [Pokemon] = []
-    var alreadyLoaded = false
+    static var alreadyLoaded = false
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var PokemonTable: UITableView!
@@ -29,10 +29,14 @@ class ResultController: UIViewController {
         PokemonTable.reloadData()
         PokemonCollection.reloadData()
         
-        if !alreadyLoaded {
+        if !ResultController.alreadyLoaded {
             pokemonArray = PokemonGenerator.getPokemonArray()
-            alreadyLoaded = true
+            ResultController.alreadyLoaded = true
         }
+        
+        
+        // initializes favoritesArray to empty when VC loads
+        UserDefaults.standard.set([Int](), forKey: "favoritesArray")
         
     }
     
