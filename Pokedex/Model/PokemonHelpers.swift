@@ -122,4 +122,15 @@ class PokemonHelpers {
         return typeArr
     }
     
+    static func getArrayFromSearchBar(_ str: String) -> [Pokemon] {
+        let allPokemon = PokemonGenerator.getPokemonArray()
+        var pokemonArr: [Pokemon] = []
+        for pokerman in allPokemon {
+            if pokerman.name.starts(with: str) {
+                pokemonArr.append(pokerman)
+            }
+        }
+        return pokemonArr
+    }
+    
 }

@@ -11,12 +11,14 @@ import UIKit
 class ResultController: UIViewController {
     
     var pokemonArray: [Pokemon] = []
+    var alreadyLoaded = false
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var PokemonTable: UITableView!
     @IBOutlet weak var tableView: UIView!
     @IBOutlet weak var collectionView: UIView!
     @IBOutlet weak var PokemonCollection: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,11 @@ class ResultController: UIViewController {
         PokemonTable.reloadData()
         PokemonCollection.reloadData()
         
-        // Do any additional setup after loading the view.
+        if !alreadyLoaded {
+            pokemonArray = PokemonGenerator.getPokemonArray()
+            alreadyLoaded = true
+        }
+        
     }
     
     @IBAction func changedSegControl(_ sender: Any) {
@@ -44,6 +50,9 @@ class ResultController: UIViewController {
         }
     }
     
+    @IBAction func goSearchOptions(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoToSearchVC", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? DetailController {
