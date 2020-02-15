@@ -18,10 +18,12 @@ extension ResultController: UICollectionViewDelegate, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCollectionCell", for: indexPath) as! PokemonCollectionCell
         let currPokemon = pokemonArray[indexPath.row]
         let imageURL = URL(string: currPokemon.imageUrl)
-        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/60319-200.png")!)
+        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/1103191-200.png")!)
         cell.PokemonIDLabel.text = "#" + String(currPokemon.id)
+        cell.PokemonNameLabel.text = currPokemon.name
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 20
         return cell
     }
     
@@ -30,8 +32,13 @@ extension ResultController: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio = 0.323
-        return CGSize(width: 374*ratio, height: 145)
+        let widthRatio: CGFloat = 0.485
+        let heightRatio: CGFloat = 0.25
+        let frameWidth = PokemonCollection.frame.width
+        let frameHeight = PokemonCollection.frame.height
+        return CGSize(width: frameWidth * widthRatio, height: frameHeight * heightRatio)
     }
+    
+    
     
 }

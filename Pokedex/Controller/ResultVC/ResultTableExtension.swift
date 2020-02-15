@@ -21,14 +21,14 @@ extension ResultController: UITableViewDataSource, UITableViewDelegate {
         let currPokemon = pokemonArray[indexPath.row]
         cell.PokemonNameLabel.text = currPokemon.name
         let imageURL = URL(string: currPokemon.imageUrl)
-        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/60319-200.png")!)
+        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/1103191-200.png")!)
         cell.PokemonTypeLabel.text = "Type: " + currPokemon.getTypes()
         cell.PokemonIDLabel.text = "#" + String(currPokemon.id)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 90
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

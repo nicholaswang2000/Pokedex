@@ -65,17 +65,17 @@ extension SearchController {
     
     @IBAction func minAttackSearch(_ sender: Any) {
         searchOrRandom = 5
-        assertTextNotEmpty()
+        assertRangeNotEmpty()
     }
     
     @IBAction func minHealthSearch(_ sender: Any) {
         searchOrRandom = 6
-        assertTextNotEmpty()
+        assertRangeNotEmpty()
     }
     
     @IBAction func minDefenseSearch(_ sender: Any) {
         searchOrRandom = 7
-        assertTextNotEmpty()
+        assertRangeNotEmpty()
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -92,6 +92,22 @@ extension SearchController {
             textToSearch = textfield.text ?? ""
             self.performSegue(withIdentifier: "GoToResultsVC", sender: self)
         }
+    }
+    
+    func assertRangeNotEmpty() {
+        let rangeArr = textfield.text?.split(separator: "-") ?? []
+        if (rangeArr.count != 2) {
+            presentAlert()
+            return
+        }
+        guard Int(rangeArr[0]) != nil else {
+            return
+        }
+        guard Int(rangeArr[1]) != nil else {
+            return
+        }
+        textToSearch = textfield.text ?? ""
+        self.performSegue(withIdentifier: "GoToResultsVC", sender: self)
     }
     
     func presentAlert() {

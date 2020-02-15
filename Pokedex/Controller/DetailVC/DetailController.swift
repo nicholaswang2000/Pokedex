@@ -40,19 +40,15 @@ class DetailController: UIViewController {
         SpAttackLabel.text = String(pokemon.specialAttack)
         SpDefenseLabel.text = String(pokemon.specialDefense)
         
-        // Do any additional setup after loading the view.
+    }
+    
+    func pokemonOneString (_ pokeName: String) -> String {
+        let toArray = pokeName.components(separatedBy: " ")
+        let backToString = toArray.joined(separator: "+")
+        return backToString
     }
     
     @IBAction func searchOnGoogle(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: "https://google.com/search?q=" + pokemon.name) ?? URL(string: "https://google.com/search?q=POKEMON")!)
-    }
-    
-    @IBAction func addToFavorite(_ sender: Any) {
-        var favArray = UserDefaults.standard.array(forKey: "favoritesArray") as! [Int]
-        if !favArray.contains(pokemon.id) {
-            favArray.append(pokemon.id)
-            UserDefaults.standard.set(favArray, forKey: "favoritesArray")
-        }
-        //print(favArray)
+        UIApplication.shared.openURL(URL(string: "https://google.com/search?q=" + pokemonOneString(pokemon.name)) ?? URL(string: "https://google.com/search?q=POKEMON")!)
     }
 }

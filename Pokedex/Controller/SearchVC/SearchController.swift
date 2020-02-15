@@ -72,6 +72,13 @@ class SearchController: UIViewController {
         view.endEditing(true)
     }
     
+    func getRangeArr(_ string: String) ->[Int] {
+        let rangeArr = string.split(separator: "-")
+        let start = Int(rangeArr[0])!
+        let end = Int(rangeArr[1])!
+        return Array(start...end)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // All search functionalities are found in Model algorithms
         if segue.identifier == "GoToResultsVC" {
@@ -92,13 +99,16 @@ class SearchController: UIViewController {
                 destinationVC.pokemonArray = PokemonGenerator.getPokemonArray()
             } else if searchOrRandom == 5 {
                 let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getMinAttackArray(Int(textToSearch) ?? 20000)
+                let rangeArr = getRangeArr(textToSearch)
+                destinationVC.pokemonArray = PokemonHelpers.getAttackArray(rangeArr)
             } else if searchOrRandom == 6 {
                 let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getMinHealthArray(Int(textToSearch) ?? 20000)
+                let rangeArr = getRangeArr(textToSearch)
+                destinationVC.pokemonArray = PokemonHelpers.getHealthArray(rangeArr)
             } else if searchOrRandom == 7 {
                 let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getMinDefenseArray(Int(textToSearch) ?? 20000)
+                let rangeArr = getRangeArr(textToSearch)
+                destinationVC.pokemonArray = PokemonHelpers.getDefenseArray(rangeArr)
             }
         }
         

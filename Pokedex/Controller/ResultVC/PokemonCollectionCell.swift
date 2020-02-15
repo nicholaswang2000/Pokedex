@@ -12,6 +12,7 @@ class PokemonCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var PokemonImage: UIImageView!
     @IBOutlet weak var PokemonIDLabel: UILabel!
+    @IBOutlet weak var PokemonNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
