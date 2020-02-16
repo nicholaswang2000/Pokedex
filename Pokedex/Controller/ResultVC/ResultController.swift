@@ -53,6 +53,7 @@ class ResultController: UIViewController {
             PokemonTable.reloadData()
             PokemonCollection.reloadData()
         }
+        searchBar.text = ""
     }
     
     @IBAction func changedSegControl(_ sender: Any) {
