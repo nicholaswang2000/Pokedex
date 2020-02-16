@@ -3,17 +3,13 @@ Pokedex is our second mini project for our training program for Mobile Developer
 
 <h1>Screenshots of the Game</h1>
 
-<h3>Main Menu Search Screen:</h3>
-<img src="screenshots/img1.png" width="40%">
-<br><br>
-<h3>Search Result Screen:</h3>
-<img src="screenshots/img2.png" width="40%">
-<br><br>
-<h3>Pokemon Profile Screen:</h3>
-<img src="screenshots/img3.png" width="40%">
-<br><br>
-<h3>Menu Search Screen when Searching for Matching Categories</h3>
-<img src="screenshots/img4.png" width="40%">
-<br><br>
-<h3>Favorite Pokemon Page</h3>
-<img src="screenshots/img5.png" width="40%">
+<h3>Main Menu Table View:</h3>
+<img src="screenshots/img1.png" width="30%">
+<h3>Main Menu Collection View:</h3>
+<img src="screenshots/img3.png" width="30%">
+<h3>Pokemon Profile Display that shows relevant statistics:</h3>
+<img src="screenshots/img2.png" width="30%">
+<h3>Advanced Search Screen for filters relevant statistics</h3>
+<img src="screenshots/img4.png" width="30%">
+<h3>Search Screen that automatically updates Table / Collection View with user input:</h3>
+<img src="screenshots/img5.png" width="30%">
