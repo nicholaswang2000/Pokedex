@@ -23,21 +23,29 @@ class ResultController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !ResultController.alreadyLoaded {
+            pokemonArray = PokemonGenerator.getPokemonArray()
+            ResultController.alreadyLoaded = true
+        } else {
+            pokemonArray = Pokerman.getPokemon()
+        }
+        
         // Reload for first search without segcontrols
         tableView.isHidden = false
         collectionView.isHidden = true
         PokemonTable.reloadData()
         PokemonCollection.reloadData()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if !ResultController.alreadyLoaded {
             pokemonArray = PokemonGenerator.getPokemonArray()
             ResultController.alreadyLoaded = true
+        } else {
+            pokemonArray = Pokerman.getPokemon()
         }
-        
-        
-        // initializes favoritesArray to empty when VC loads
-        UserDefaults.standard.set([Int](), forKey: "favoritesArray")
-        
+        PokemonTable.reloadData()
+        PokemonCollection.reloadData()
     }
     
     @IBAction func changedSegControl(_ sender: Any) {

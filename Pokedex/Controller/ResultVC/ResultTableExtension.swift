@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension ResultController: UITableViewDataSource, UITableViewDelegate {
     // Delegate and DataSource protocol stubs
@@ -20,8 +21,8 @@ extension ResultController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokemonTableCell", for: indexPath) as! PokemonTableCell
         let currPokemon = pokemonArray[indexPath.row]
         cell.PokemonNameLabel.text = currPokemon.name
-        let imageURL = URL(string: currPokemon.imageUrl)
-        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/1103191-200.png")!)
+        let imageURL = URL(string: currPokemon.largeUrl)
+        cell.PokemonImage.kf.setImage(with: imageURL)
         cell.PokemonTypeLabel.text = "Type: " + currPokemon.getTypes()
         cell.PokemonIDLabel.text = "#" + String(currPokemon.id)
         return cell

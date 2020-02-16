@@ -30,7 +30,7 @@ class DetailController: UIViewController {
         
         IDLabel.text = "#" + String(pokemon.id)
         PokemonNameLabel.text = pokemon.name
-        PokemonImage.image = try? UIImage(withContentsOfUrl: URL(string: pokemon.imageUrl) ?? URL(string: "https://static.thenounproject.com/png/60319-200.png")!)
+        PokemonImage.image = try? UIImage(withContentsOfUrl: URL(string: pokemon.largeUrl) ?? URL(string: "https://static.thenounproject.com/png/60319-200.png")!)
         TypeLabel.text = pokemon.getTypes()
         TotalLabel.text = String(pokemon.total)
         AttackLabel.text = String(pokemon.attack)

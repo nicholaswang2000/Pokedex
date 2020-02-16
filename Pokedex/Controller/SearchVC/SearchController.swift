@@ -11,60 +11,57 @@ import UIKit
 class SearchController: UIViewController {
     
     @IBOutlet weak var normalView: UIView!
-    @IBOutlet weak var optionsView: UIView!
-    @IBOutlet weak var textfield: UITextField!
-    @IBOutlet weak var categoryView: UIView!
-    @IBOutlet weak var typeView: UIView!
     
-    // Type Button Outlets
-    @IBOutlet weak var grassBtn: UIButton!
-    @IBOutlet weak var bugBtn: UIButton!
-    @IBOutlet weak var psychicBtn: UIButton!
-    @IBOutlet weak var dragonBtn: UIButton!
-    @IBOutlet weak var iceBtn: UIButton!
-    @IBOutlet weak var groundBtn: UIButton!
-    @IBOutlet weak var electricBtn: UIButton!
-    @IBOutlet weak var fairyBtn: UIButton!
-    @IBOutlet weak var normalBtn: UIButton!
-    @IBOutlet weak var rockBtn: UIButton!
-    @IBOutlet weak var fightingBtn: UIButton!
-    @IBOutlet weak var fireBtn: UIButton!
-    @IBOutlet weak var unknownBtn: UIButton!
-    @IBOutlet weak var flyingBtn: UIButton!
-    @IBOutlet weak var steelBtn: UIButton!
-    @IBOutlet weak var darkBtn: UIButton!
-    @IBOutlet weak var ghostBtn: UIButton!
-    @IBOutlet weak var waterBtn: UIButton!
-    @IBOutlet weak var poisonBtn: UIButton!
+    @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var numberTextfield: UITextField!
+    @IBOutlet weak var minattTF: UITextField!
+    @IBOutlet weak var maxattTF: UITextField!
+    @IBOutlet weak var mindefTF: UITextField!
+    @IBOutlet weak var maxdefTF: UITextField!
+    @IBOutlet weak var minhTF: UITextField!
+    @IBOutlet weak var maxhTF: UITextField!
     
+    @IBOutlet weak var bugbtn: UIButton!
+    @IBOutlet weak var icebtn: UIButton!
+    @IBOutlet weak var darkbtn: UIButton!
+    @IBOutlet weak var groundbtn: UIButton!
+    @IBOutlet weak var dragonbtn: UIButton!
+    @IBOutlet weak var grassbtn: UIButton!
+    @IBOutlet weak var electricbtn: UIButton!
+    @IBOutlet weak var normalbtn: UIButton!
+    @IBOutlet weak var flyingbtn: UIButton!
+    @IBOutlet weak var poisonbtn: UIButton!
+    @IBOutlet weak var fightingbtn: UIButton!
+    @IBOutlet weak var psychicbtn: UIButton!
+    @IBOutlet weak var firebtn: UIButton!
+    @IBOutlet weak var rockbtn: UIButton!
+    @IBOutlet weak var fairybtn: UIButton!
+    @IBOutlet weak var steelbtn: UIButton!
+    @IBOutlet weak var ghostbtn: UIButton!
+    @IBOutlet weak var waterbtn: UIButton!
     
     var randomPokemonList:[Pokemon] = []
     var typesToSearch:[PokeType] = []
     var typesPressed:[PokeType: Bool] = [PokeType.Bug:false, PokeType.Dark:false, PokeType.Dragon:false, PokeType.Electric:false, PokeType.Fairy:false, PokeType.Fighting:false, PokeType.Fire:false, PokeType.Flying:false, PokeType.Ghost:false, PokeType.Grass:false, PokeType.Ground:false, PokeType.Ice:false, PokeType.Normal:false, PokeType.Poison:false, PokeType.Psychic:false, PokeType.Rock:false, PokeType.Steel:false, PokeType.Water:false, PokeType.Unknown:false]
-    var textToSearch = ""
     var categoryArray: [PokeType] = []
-    var searchOrRandom = 0 // 0 means random, 1 means type, 2 means name, 3 means number, 4 means all, 5 means by min attack, 6 means by min health, 7 means by min defense
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        normalView.isHidden = false
-        optionsView.isHidden = true
-        categoryView.isHidden = true
-        typeView.isHidden = true
         
         // Gets rid of keyboard when tapped elsewhere
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        nameTextfield.text = ""
+        numberTextfield.text = ""
+        minattTF.text = ""
+        maxattTF.text = ""
+        mindefTF.text = ""
+        maxdefTF.text = ""
+        minhTF.text = ""
+        maxhTF.text = ""
+        
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        normalView.isHidden = false
-        optionsView.isHidden = true
-        categoryView.isHidden = true
-        typeView.isHidden = true
     }
     
     // function to get rid of keyboard when tapped elsewhere
@@ -78,42 +75,4 @@ class SearchController: UIViewController {
         let end = Int(rangeArr[1])!
         return Array(start...end)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // All search functionalities are found in Model algorithms
-        if segue.identifier == "GoToResultsVC" {
-            if searchOrRandom == 0 {
-                let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = randomPokemonList
-            } else if searchOrRandom == 1 {
-                let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getTypeSearchArray(categoryArray)
-            } else if searchOrRandom == 2 {
-                let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getNameSearchArray(textToSearch)
-            } else if searchOrRandom == 3 {
-                let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonHelpers.getNumberSearchArray(Int(textToSearch) ?? 0)
-            } else if searchOrRandom == 4 {
-                let destinationVC = segue.destination as! ResultController
-                destinationVC.pokemonArray = PokemonGenerator.getPokemonArray()
-            } else if searchOrRandom == 5 {
-                let destinationVC = segue.destination as! ResultController
-                let rangeArr = getRangeArr(textToSearch)
-                destinationVC.pokemonArray = PokemonHelpers.getAttackArray(rangeArr)
-            } else if searchOrRandom == 6 {
-                let destinationVC = segue.destination as! ResultController
-                let rangeArr = getRangeArr(textToSearch)
-                destinationVC.pokemonArray = PokemonHelpers.getHealthArray(rangeArr)
-            } else if searchOrRandom == 7 {
-                let destinationVC = segue.destination as! ResultController
-                let rangeArr = getRangeArr(textToSearch)
-                destinationVC.pokemonArray = PokemonHelpers.getDefenseArray(rangeArr)
-            }
-        }
-        
-        
-    }
-    
-
 }

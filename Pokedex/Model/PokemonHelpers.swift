@@ -35,9 +35,8 @@ class PokemonHelpers {
         return allPokemon[0]
     }
     
-    static func getNameSearchArray(_ name: String) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
-        for pokerman in allPokemon {
+    static func getNameSearchArray(_ name: String, _ arr: [Pokemon]) -> [Pokemon] {
+        for pokerman in arr {
             if pokerman.name.lowercased().trimmingCharacters(in: .whitespaces) == name.lowercased().trimmingCharacters(in: .whitespaces) {
                 return [pokerman]
             }
@@ -45,9 +44,8 @@ class PokemonHelpers {
         return []
     }
     
-    static func getNumberSearchArray(_ id: Int) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
-        for pokerman in allPokemon {
+    static func getNumberSearchArray(_ id: Int, _ arr: [Pokemon]) -> [Pokemon] {
+        for pokerman in arr {
             if id == pokerman.id {
                 return [pokerman]
             }
@@ -55,43 +53,39 @@ class PokemonHelpers {
         return []
     }
     
-    static func getAttackArray(_ attackArr: [Int]) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
+    static func getAttackArray(_ minAttack: Int, _ maxAttack: Int, _ arr: [Pokemon]) -> [Pokemon] {
         var pokemonArr: [Pokemon] = []
-        for pokerman in allPokemon {
-            if attackArr.contains(pokerman.attack) {
+        for pokerman in arr {
+            if pokerman.attack <= maxAttack && pokerman.attack >= minAttack {
                 pokemonArr.append(pokerman)
             }
         }
         return pokemonArr
     }
     
-    static func getDefenseArray(_ defenseArr: [Int]) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
+    static func getDefenseArray(_ minDefense: Int, _ maxDefense: Int, _ arr: [Pokemon]) -> [Pokemon] {
         var pokemonArr: [Pokemon] = []
-        for pokerman in allPokemon {
-            if defenseArr.contains(pokerman.defense) {
+        for pokerman in arr {
+            if pokerman.defense <= maxDefense && pokerman.defense >= minDefense {
                 pokemonArr.append(pokerman)
             }
         }
         return pokemonArr
     }
     
-    static func getHealthArray(_ healthArr: [Int]) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
+    static func getHealthArray(_ minHealth: Int, _ maxHealth: Int, _ arr: [Pokemon]) -> [Pokemon] {
         var pokemonArr: [Pokemon] = []
-        for pokerman in allPokemon {
-            if healthArr.contains(pokerman.health) {
+        for pokerman in arr {
+            if pokerman.health <= maxHealth && pokerman.health >= minHealth {
                 pokemonArr.append(pokerman)
             }
         }
         return pokemonArr
     }
     
-    static func getTypeSearchArray(_ typeArr: [PokeType]) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
+    static func getTypeSearchArray(_ typeArr: [PokeType], _ arr: [Pokemon]) -> [Pokemon] {
         var pokemonArr: [Pokemon] = []
-        for pokerman in allPokemon {
+        for pokerman in arr {
             let currTypes = pokerman.types
             for ct in currTypes {
                 if typeArr.contains(ct) {
@@ -114,9 +108,8 @@ class PokemonHelpers {
     }
     
     static func getArrayFromSearchBar(_ str: String) -> [Pokemon] {
-        let allPokemon = PokemonGenerator.getPokemonArray()
         var pokemonArr: [Pokemon] = []
-        for pokerman in allPokemon {
+        for pokerman in PokemonGenerator.getPokemonArray() {
             if pokerman.name.starts(with: str) {
                 pokemonArr.append(pokerman)
             }

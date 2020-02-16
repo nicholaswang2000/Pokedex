@@ -17,13 +17,19 @@ extension ResultController: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCollectionCell", for: indexPath) as! PokemonCollectionCell
         let currPokemon = pokemonArray[indexPath.row]
-        let imageURL = URL(string: currPokemon.imageUrl)
-        cell.PokemonImage.image = try? UIImage(withContentsOfUrl: imageURL ?? URL(string: "https://static.thenounproject.com/png/1103191-200.png")!)
+        let imageURL = URL(string: currPokemon.largeUrl)
+        cell.PokemonImage.kf.setImage(with: imageURL)
         cell.PokemonIDLabel.text = "#" + String(currPokemon.id)
         cell.PokemonNameLabel.text = currPokemon.name
-        cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 20
+        cell.contentView.layer.borderColor = UIColor.gray.cgColor
+        cell.contentView.layer.borderWidth = 1
+        cell.contentView.layer.cornerRadius = 10
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0.5, height: 1)
+        cell.layer.shadowRadius = 10
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         return cell
     }
     
