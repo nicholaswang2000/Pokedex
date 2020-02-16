@@ -11,7 +11,7 @@ import UIKit
 
 extension ResultController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        pokemonArray = PokemonHelpers.getArrayFromSearchBar(searchText)
+        pokemonArray = PokemonHelpers.getArrayFromSearchBar(searchText, defaultArray)
         PokemonTable.reloadData()
         PokemonCollection.reloadData()
     }
@@ -23,5 +23,8 @@ extension ResultController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
+        pokemonArray = defaultArray
+        PokemonTable.reloadData()
+        PokemonCollection.reloadData()
     }
 }

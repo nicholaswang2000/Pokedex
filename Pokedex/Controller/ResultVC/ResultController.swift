@@ -11,6 +11,8 @@ import UIKit
 class ResultController: UIViewController {
     
     var pokemonArray: [Pokemon] = []
+    var defaultArray: [Pokemon] = []
+    var prevArray: [Pokemon] = []
     static var alreadyLoaded = false
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -25,10 +27,13 @@ class ResultController: UIViewController {
         
         if !ResultController.alreadyLoaded {
             pokemonArray = PokemonGenerator.getPokemonArray()
+            defaultArray = PokemonGenerator.getPokemonArray()
             ResultController.alreadyLoaded = true
         } else {
             pokemonArray = Pokerman.getPokemon()
+            defaultArray = Pokerman.getPokemon()
         }
+        
         
         // Reload for first search without segcontrols
         tableView.isHidden = false
@@ -40,12 +45,14 @@ class ResultController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if !ResultController.alreadyLoaded {
             pokemonArray = PokemonGenerator.getPokemonArray()
+            defaultArray = PokemonGenerator.getPokemonArray()
             ResultController.alreadyLoaded = true
         } else {
             pokemonArray = Pokerman.getPokemon()
+            defaultArray = Pokerman.getPokemon()
+            PokemonTable.reloadData()
+            PokemonCollection.reloadData()
         }
-        PokemonTable.reloadData()
-        PokemonCollection.reloadData()
     }
     
     @IBAction func changedSegControl(_ sender: Any) {
